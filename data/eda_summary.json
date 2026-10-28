@@ -1,0 +1,91 @@
+{
+  "farm_rated_capacity_kw": 12300.0,
+  "farm_mean_power_kw": 3478.07,
+  "farm_capacity_factor_pct": 28.28,
+  "turbines": {
+    "Turbine_1": {
+      "records": 52574,
+      "start_time": "2024-01-01 00:00:00",
+      "end_time": "2024-12-31 23:50:00",
+      "mean_wind_speed_ms": 6.09,
+      "max_wind_speed_ms": 21.5,
+      "mean_power_kw": 607.12,
+      "max_power_kw": 2074.69,
+      "capacity_factor_pct": 29.62,
+      "negative_power_count": 5568,
+      "missing_power_count": 0,
+      "cut_in_operational_pct": 86.85,
+      "rated_power_zone_pct": 2.17
+    },
+    "Turbine_2": {
+      "records": 52604,
+      "start_time": "2024-01-01 00:00:00",
+      "end_time": "2024-12-31 23:50:00",
+      "mean_wind_speed_ms": 6.43,
+      "max_wind_speed_ms": 22.1,
+      "mean_power_kw": 674.55,
+      "max_power_kw": 2078.88,
+      "capacity_factor_pct": 32.9,
+      "negative_power_count": 4913,
+      "missing_power_count": 0,
+      "cut_in_operational_pct": 88.88,
+      "rated_power_zone_pct": 2.71
+    },
+    "Turbine_3": {
+      "records": 52575,
+      "start_time": "2024-01-01 00:00:00",
+      "end_time": "2024-12-31 23:50:00",
+      "mean_wind_speed_ms": 5.9,
+      "max_wind_speed_ms": 21.98,
+      "mean_power_kw": 565.08,
+      "max_power_kw": 2078.6,
+      "capacity_factor_pct": 27.57,
+      "negative_power_count": 6695,
+      "missing_power_count": 0,
+      "cut_in_operational_pct": 86.77,
+      "rated_power_zone_pct": 2.05
+    },
+    "Turbine_4": {
+      "records": 52293,
+      "start_time": "2024-01-01 00:00:00",
+      "end_time": "2024-12-31 23:50:00",
+      "mean_wind_speed_ms": 6.11,
+      "max_wind_speed_ms": 21.35,
+      "mean_power_kw": 580.87,
+      "max_power_kw": 2077.31,
+      "capacity_factor_pct": 28.34,
+      "negative_power_count": 7778,
+      "missing_power_count": 0,
+      "cut_in_operational_pct": 87.48,
+      "rated_power_zone_pct": 2.3
+    },
+    "Turbine_5": {
+      "records": 52493,
+      "start_time": "2024-01-01 00:00:00",
+      "end_time": "2024-12-31 23:50:00",
+      "mean_wind_speed_ms": 5.92,
+      "max_wind_speed_ms": 20.12,
+      "mean_power_kw": 569.81,
+      "max_power_kw": 2082.88,
+      "capacity_factor_pct": 27.8,
+      "negative_power_count": 6699,
+      "missing_power_count": 0,
+      "cut_in_operational_pct": 86.28,
+      "rated_power_zone_pct": 2.19
+    },
+    "Turbine_6": {
+      "records": 51868,
+      "start_time": "2024-01-01 00:00:00",
+      "end_time": "2024-12-31 23:50:00",
+      "mean_wind_speed_ms": 5.67,
+      "max_wind_speed_ms": 20.31,
+      "mean_power_kw": 480.64,
+      "max_power_kw": 2089.06,
+      "capacity_factor_pct": 23.45,
+      "negative_power_count": 9776,
+      "missing_power_count": 0,
+      "cut_in_operational_pct": 84.99,
+      "rated_power_zone_pct": 1.74
+    }
+  }
+}

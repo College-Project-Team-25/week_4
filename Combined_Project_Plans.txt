@@ -1,0 +1,177 @@
+GROUP 25 - WIND POWER FORECASTING PROJECT PLANS
+GitHub: https://github.com/University-of-Hertfordshire/Group-25-Wind-Forecasting
+Topic: 72-Hour Electricity Generation Forecasting for Kelmarsh Wind Farm
+
+================================================================================
+PLAN 1: PROJECT SPECIFICATIONS
+================================================================================
+1. TOPIC & PROBLEM:
+Wind power generation is intermittent and weather-dependent.
+Grid operators need accurate 72-hour generation forecasts.
+Kelmarsh Wind Farm has six Senvion MM92 turbines.
+Inaccurate predictions cause grid penalties and imbalance.
+
+2. RESEARCH QUESTION:
+Can hybrid and pre-trained models outperform baseline neural networks?
+Can numerical weather predictions reliably forecast turbine power?
+
+3. OBJECTIVES:
+- Ingest Kelmarsh SCADA and Open-Meteo UKMO forecast data.
+- Develop a baseline Multi-Layer Perceptron neural network.
+- Build a hybrid physical power curve and XGBoost model.
+- Fine-tune a pre-trained time-series foundation model (Chronos).
+- Optimise hyperparameters using Bayesian search.
+- Deploy an interactive forecasting and AI explanation dashboard.
+
+4. TARGETS & KPIs:
+- Forecast Horizon: Hourly predictions up to 72 hours.
+- Whole-Farm Accuracy: MAE <= 8% of rated capacity (12.3 MW).
+- Baseline Improvement: Hybrid RMSE >= 10% lower than baseline.
+- Pre-trained Transfer: Pre-trained MAE >= 8% lower than baseline.
+- Dashboard Latency: Forecast inference under 2.5 seconds.
+- Test Quality: Minimum 80% automated unit test coverage.
+
+================================================================================
+PLAN 2: PROJECT TIMELINE & GANTT CHART
+================================================================================
+TASK LIST & DESCRIPTIONS:
+1. Initial Project Plan (05-Feb - 12-Feb): Formulate specifications, KPIs, and deliverables.
+2. Next Supervisor Meeting (15-Feb): Milestone review and plan feedback sign-off.
+3. Data Ethics Prep & Quiz (12-Feb - 21-Feb): Complete ethics review and Canvas quiz.
+4. Literature Review (05-Feb - 26-Feb): Review wind forecasting and hybrid AI methods.
+5. Coding - Investigate Features (12-Feb - 19-Feb): SCADA and UKMO exploratory data analysis.
+6. Coding - Preprocessing (19-Feb - 26-Feb): Filter negatives, decompose wind vectors, resample.
+7. Coding - Setting Models (26-Feb - 25-Mar): Implement baseline NN, hybrid, and Chronos models.
+8. Poster Preparation & Presentation (19-Feb - 08-Mar): Visualise design; present on 08-Mar.
+9. Working Models on Full Dataset (25-Mar - 08-Apr): Optuna hyperparameter tuning and 72h testing.
+10. Final Report Preparation (08-Apr - 02-May): Comprehensive technical write-up; submit 02-May.
+11. Viva Preparation & Viva (29-Apr - 13-May): Final oral exam and software demonstration.
+
+GANTT CHART:
+Task / Milestone     |05-F|12-F|19-F|26-F|04-M|11-M|18-M|25-M|01-A|08-A|15-A|22-A|29-A|06-M|13-M|
+---------------------+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
+Initial Project Plan | == |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+Supervisor Meeting   |    | ** |    |    |    |    |    |    |    |    |    |    |    |    |    |
+Data Ethics & Quiz   |    | == | ** |    |    |    |    |    |    |    |    |    |    |    |    |
+Literature Review    | == | == | == |    |    |    |    |    |    |    |    |    |    |    |    |
+Investigate Features |    | == |    |    |    |    |    |    |    |    |    |    |    |    |    |
+Data Preprocessing   |    |    | == |    |    |    |    |    |    |    |    |    |    |    |    |
+Setting Models       |    |    |    | == | == | == | == |    |    |    |    |    |    |    |    |
+Poster & Presentation|    |    | == | == | ** |    |    |    |    |    |    |    |    |    |    |
+Models Full Dataset  |    |    |    |    |    |    |    | == | == |    |    |    |    |    |    |
+Working on Report    |    |    |    |    |    |    |    |    |    | == | == | == |    |    |    |
+Report Submission    |    |    |    |    |    |    |    |    |    |    |    |    | ** |    |    |
+Preparation for Viva |    |    |    |    |    |    |    |    |    |    |    |    | == | == |    |
+Viva Oral Exam       |    |    |    |    |    |    |    |    |    |    |    |    |    | == | ** |
+[==] Active Period; [**] Key Assessment / Milestone Event
+
+================================================================================
+PLAN 3: DATA MANAGEMENT PLAN
+================================================================================
+1. DATASETS (TWO REAL-WORLD SOURCES):
+- Dataset 1: Kelmarsh SCADA (Cubico Investments, Zenodo: zenodo.org/records/16807551).
+  10-minute sensor telemetry for 6 turbines (wind speed, active power, pitch, yaw).
+- Dataset 2: Open-Meteo UKMO Weather API (open-meteo.com/en/docs/ukmo-api).
+  Hourly 72-hour predictions (10m/100m wind speed, gusts, air temp, pressure).
+
+2. METADATA & CONTROL:
+- SCADA resampled to 1-hour means matching UKMO forecast intervals.
+- Target feature: Active power output (kW).
+- GitHub Repo: github.com/University-of-Hertfordshire/Group-25-Wind-Forecasting
+- Main branch protected; all work merged via feature PRs.
+- Snake_case naming; raw data excluded via .gitignore; parquet cache.
+
+3. ETHICAL STATEMENT (UH POLICY COMPLIANCE):
+- Q1 GDPR: Data contains only turbine telemetry. Zero PII collected.
+- Q2 UH Policies: Conforms strictly to UH ethical guidelines and UPR AS14.
+- Q3 Permissions: Zenodo dataset is under CC-BY 4.0 open license.
+- Q4 Ethical Collection: Legitimate industrial telemetry adhering to IEC-61400.
+
+================================================================================
+PLAN 4: PIPELINE WORKFLOW
+================================================================================
+PIPELINE FLOW:
+[Kelmarsh SCADA + UKMO API] -> [Step 1: Data Cleaning (Filter Errors/Impute)]
+  -> [Step 2: Resampling & Feature Engineering (u/v Vectors, Power Curve)]
+  -> [Step 3: Model Training (1. Baseline NN | 2. Hybrid XGBoost | 3. Chronos)]
+  -> [Step 4: Optuna Hyperparameter Optimization (TimeSeriesSplit CV)]
+  -> [Step 5: Model Evaluation (MAE, RMSE, R2 over 72h Horizon)]
+  -> [Step 6: FastAPI Backend & Interactive UI with Gemini AI Explanation]
+
+STAGES DETAILS:
+- Feature Prep: Decompose wind angles into orthogonal vectors; add lagged power.
+- Model 1 (Baseline): Multi-Layer Perceptron (3 hidden layers, ReLU, Dropout).
+- Model 2 (Hybrid): Aerodynamic Power Curve combined with XGBoost residual model.
+- Model 3 (Pre-Trained): Chronos foundation model fine-tuned on Kelmarsh telemetry.
+- Hyperparameter Tuning: 50-trial Optuna Bayesian search minimizing validation MAE.
+- Deployment: Docker container hosting FastAPI REST API and live dashboard.
+
+================================================================================
+PLAN 5: TEST PLAN
+================================================================================
+1. SCOPE:
+- In-Scope: Ingestion, cleaning, feature math, model training, API, dashboard UI.
+- Out-of-Scope: Turbine physical failure and external API service downtime.
+
+2. STANDARDS & CODE QUALITY:
+- PEP 8 code style enforced via Flake8 and Black.
+- Python type hints and Google-style docstrings required.
+- Explicit try-except blocks with error logging.
+
+3. DATA & UNIT TESTING:
+- Range validation: Wind speed >= 0; Power bounded between 0 and 2,050 kW.
+- Unit testing with pytest; target code coverage >= 80%.
+- Automated CI pipeline runs linting and unit tests on PRs.
+
+4. MODEL VALIDATION, UAT & SIGN-OFF:
+- Validation against unseen holdout data; target farm MAE <= 8%.
+- Hybrid model must outperform Baseline NN RMSE by >= 10%.
+- UAT verifies turbine selection, 72h curves, and AI explanations.
+- Formal sign-off: Data Engineer -> ML Engineer -> Software Dev -> Project Lead.
+
+================================================================================
+PLAN 6: MODEL DEVELOPMENT AND OPTIMISATION
+================================================================================
+Three machine-learning approaches will be developed and compared.
+
+MODEL 1: MULTILAYER PERCEPTRON (MLP)
+- Architecture: Feed-forward neural network (3 hidden layers, ReLU activations, Dropout).
+- Inputs: Prepared weather features (wind speed u/v vectors, gusts, temperature,
+  pressure) and historical SCADA power measurements.
+- Output: Predicted hourly power output (kW) up to 72 hours ahead.
+- Role: Primary neural-network baseline for comparison with the other approaches.
+- Framework: PyTorch or TensorFlow/Keras.
+
+MODEL 2: HYBRID AERODYNAMIC POWER CURVE AND XGBOOST
+- Stage 1 (Physical): Aerodynamic power curve maps wind speed to expected turbine
+  output using the Senvion MM92 rated power curve (cut-in ~3 m/s, rated ~12 m/s,
+  cut-out ~25 m/s).
+- Stage 2 (Statistical): XGBoost residual model learns the signed error between
+  Stage 1 estimates and actual SCADA measurements, correcting for turbulence,
+  yaw misalignment, wake effects, and seasonal deviations.
+- Final Forecast = Power Curve Estimate + XGBoost Residual Correction.
+- Aim: Improve forecast accuracy beyond what either physical or statistical
+  modelling achieves alone.
+- Framework: Scikit-learn power curve interpolation + XGBoost library.
+
+MODEL 3: PRE-TRAINED CHRONOS FOUNDATION MODEL
+- Base Model: Amazon Chronos (chronos-t5-small / chronos-t5-base), a pre-trained
+  probabilistic time-series transformer trained on diverse real-world datasets.
+- Adaptation strategy to be determined based on:
+    * Input format compatibility with Kelmarsh hourly SCADA telemetry.
+    * Computational requirements (GPU memory, inference latency).
+    * Suitability for producing 72-step (72-hour) ahead point forecasts.
+- Likely approach: zero-shot inference or lightweight fine-tuning on the
+  Kelmarsh power time series using the HuggingFace Transformers library.
+- Framework: HuggingFace Transformers + GluonTS / Chronos pip package.
+
+BASELINE: PERSISTENCE MODEL
+- Naive baseline: forecast = last observed power value repeated for 72 hours.
+- Used to establish the minimum performance bar all models must exceed.
+
+HYPERPARAMETER OPTIMISATION:
+- Tool: Optuna (Bayesian / TPE sampler), 50 trials per model.
+- Validation: TimeSeriesSplit cross-validation (chronological, no data leakage).
+- Optimisation Objective: Minimise Mean Absolute Error (MAE) on validation fold.
+- Final Evaluation: All models tested on the same held-out chronological test
+  period for a fair, like-for-like comparison (MAE, RMSE, R2).
